@@ -23,7 +23,7 @@ object Implicits {
   // implicit arguments and values
   def increment(x: Int)(implicit y: Int) = x + y
 
-  implicit val b = 10
+  implicit val b: Int = 10
 
   def increment2 = increment(20) // the compiler automatically completes with (10)
 
