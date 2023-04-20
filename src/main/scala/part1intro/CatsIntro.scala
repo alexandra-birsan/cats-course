@@ -11,6 +11,8 @@ object CatsIntro {
 
   // part 2 - import TS instances for the types you need
   import cats.instances.int._
+  import cats.instances.string._
+  import cats.instances.double._
 
   // part 3 -  use the type class
   val intEquality: Eq[Int] = Eq[Int]
