@@ -1,6 +1,6 @@
-package part1recap
+package part1intro
 
-import part1recap.Implicits.Person
+import part1intro.Implicits.Person
 
 object Implicits {
 
