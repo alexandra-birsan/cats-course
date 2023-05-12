@@ -100,5 +100,5 @@ object TCVariance {
   // rule 3: you can't have both benefits
   // cats has INVARIANT TYPE CLASSES
   // if you want to check equality of Some and None, then use the smart constructors of the type
-  Option(2) === Option.empty[Int] // true
+  Option(2) === Option.empty[Int] // false :D
 }
