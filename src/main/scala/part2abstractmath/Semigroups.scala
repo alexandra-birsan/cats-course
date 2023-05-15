@@ -1,6 +1,6 @@
 package part2abstractmath
 
-object Semigroups {
+object Semigroups extends App {
 
   // semigroups COMBINE elements of the same type
 
@@ -29,10 +29,16 @@ object Semigroups {
 
   implicit val expenseSemigroup: Semigroup[Expense] = Semigroup[Expense] { (e1, e2) => Expense(e1.id + e2.id, e1.amount + e2.amount) }
 
-  // part 4: extension methods from Semigroup
-  
+  // part 4: extension methods from Semigroup - |+|
+  import cats.syntax.semigroup._
 
-  def main(args: Array[String]): Unit = {
+  val anIntSum = 2 |+| 3 // requires the presence of an implicit Semigroup[Int]
+  val aStringConcat = "we like "  |+| "semigroups"
+
+  // todo2: define a general API
+  def reduceThings2[T:Semigroup](list:List[T]): T = list.reduce(_ |+| _) // :D
+
+//  def main(args: Array[String]): Unit = {
     println(intCombination)
     println(stringCombination)
 
@@ -52,6 +58,7 @@ object Semigroups {
     val stringOptions = List(Option("Hello"), Option("Cats"), Option("Scala"), Option("Java"), None)
     println(reduceThings(stringOptions)) // Some(HelloCatsScalaJava) - concatenation
     println(reduceThings(List(Expense(1, 100), Expense(2, 200), Expense(3, 300)))) // Expense(6,600.0)
-  }
+    println(reduceThings2(List(Expense(2, 100), Expense(2, 200), Expense(3, 300)))) // Expense(6,600.0)
+//  }
 
 }
